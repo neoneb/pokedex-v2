@@ -1,5 +1,5 @@
-function SearchResultModal() {
-  return <div>Search Result Modal</div>;
+function SearchResultModal({ state }) {
+  return <div>{state.pokemon.name}</div>;
 }
 
 export default SearchResultModal;
