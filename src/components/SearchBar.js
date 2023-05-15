@@ -1,17 +1,20 @@
 import { useState } from 'react';
 
-function SearchBar({ fetchPokemon }) {
+function SearchBar({ fetchPokemon, setShowModal }) {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchPokemon(query.toLocaleLowerCase());
     e.target.searchInput.value = '';
+    setQuery('');
+    setShowModal(true);
   };
 
   const handleClick = (e) => {
     const randomId = Math.floor(Math.random() * 898) + 1;
     fetchPokemon(randomId);
+    setShowModal(true);
   };
 
   return (

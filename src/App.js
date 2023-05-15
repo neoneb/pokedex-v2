@@ -3,9 +3,11 @@ import SearchBar from './components/SearchBar';
 import SearchResultModal from './components/SearchResultModal';
 
 function App() {
-  const [state, setState] = useState({
+  const [pokemonData, setPokemonData] = useState({
     pokemon: {},
   });
+
+  const [showModal, setShowModal] = useState(false);
 
   const fetchPokemon = async function (searchValue) {
     try {
@@ -13,19 +15,20 @@ function App() {
         `https://pokeapi.co/api/v2/pokemon/${searchValue}/`
       );
       const data = await response.json();
-      setState({
+      setPokemonData({
         pokemon: data,
       });
-      console.log(state);
+      console.log(pokemonData);
     } catch (err) {
+      setShowModal(false);
       console.log('Pokemon not Found!', err);
     }
   };
 
   return (
     <div>
-      <SearchBar fetchPokemon={fetchPokemon} />
-      <SearchResultModal state={state} />
+      <SearchBar fetchPokemon={fetchPokemon} setShowModal={setShowModal} />
+      {showModal && <SearchResultModal state={pokemonData} />}
     </div>
   );
 }
