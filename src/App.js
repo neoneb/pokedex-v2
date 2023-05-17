@@ -18,17 +18,22 @@ function App() {
       setPokemonData({
         pokemon: data,
       });
-      console.log(pokemonData);
     } catch (err) {
       setShowModal(false);
       console.log('Pokemon not Found!', err);
     }
   };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <div>
       <SearchBar fetchPokemon={fetchPokemon} setShowModal={setShowModal} />
-      {showModal && <SearchResultModal state={pokemonData} />}
+      {showModal && (
+        <SearchResultModal onClose={handleModalClose} state={pokemonData} />
+      )}
     </div>
   );
 }
