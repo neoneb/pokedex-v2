@@ -30,6 +30,9 @@ function App() {
 
   return (
     <div>
+      <header>
+        <h1>Pokedex</h1>
+      </header>
       <SearchBar fetchPokemon={fetchPokemon} setShowModal={setShowModal} />
       {showModal && (
         <SearchResultModal onClose={handleModalClose} state={pokemonData} />

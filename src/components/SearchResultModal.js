@@ -26,17 +26,23 @@ function SearchResultModal({ state, onClose }) {
         onClick={onClose}
         className='fixed inset-0 bg-gray-300 opacity-80'
       ></div>
-      <div className='fixed inset-40 p-10 bg-white'>
-        <div>{pokemon.name}</div>
-        <div># {pokemon.id}</div>
+      <div className='fixed inset-40 p-10 bg-white rounded-lg border-2 border-slate-700 flex flex-col'>
+        <div className=''>
+          <button onClick={onClose} className='absolute top-3 right-4'>
+            X
+          </button>
+        </div>
+        <div className=''>{pokemon.name}</div>
+        <div className=''># {pokemon.id}</div>
         <img
+          className=''
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
           alt={state.pokemon.name}
         />
-        <div>Type: {types}</div>
-        <div>Height: {pokemon.height}</div>
-        <div>Weight: {pokemon.weight}</div>
-        <div>Abilities: {abilities}</div>
+        <div className=''>Type: {types}</div>
+        <div className=''>Height: {pokemon.height}</div>
+        <div className=''>Weight: {pokemon.weight}</div>
+        <div className=''>Abilities: {abilities}</div>
       </div>
     </div>,
 
